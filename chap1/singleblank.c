@@ -7,18 +7,18 @@
 
 int main()
 {
-	int c, nl, state;
-	nl = 0;
+	int c, state;
 	state = OUT;
 	while ((c = getchar ()) != '6'){
-		if (c == ' ' || c == '\n' || c == '\t')
+		
+		if (state == IN && (c == ' ' || c == '\n' || c == '\t'))
 			state = IN;
-		else if (state == IN){
-			c = '1';
-			state = 0;
+		else if (c == ' ' || c == '\n' || c == '\t'){
+			state = IN;
+			putchar(c);
 		}
 		else
-			state = 0;
-		putchar(c);
+			state = OUT;
+			putchar(c);
 	}
 }
