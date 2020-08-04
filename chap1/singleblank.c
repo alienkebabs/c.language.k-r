@@ -10,15 +10,15 @@ int main()
 	int c, state;
 	state = OUT;
 	while ((c = getchar ()) != '6'){
-		
 		if (state == IN && (c == ' ' || c == '\n' || c == '\t'))
 			state = IN;
 		else if (c == ' ' || c == '\n' || c == '\t'){
 			state = IN;
 			putchar(c);
 		}
-		else
+		else {
 			state = OUT;
 			putchar(c);
+		}
 	}
 }
