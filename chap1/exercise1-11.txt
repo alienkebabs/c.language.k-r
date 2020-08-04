@@ -1,0 +1,2 @@
+Exercise 1-11
+I would test the word count program by compiling and running it with many different types of input. I think the program will have issues working correctly with input that has multiple blank space characters in a row. 
