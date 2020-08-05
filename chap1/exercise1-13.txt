@@ -1,0 +1,36 @@
+Exercise 1-13
+Write a program to print a histogram of the longths of words in its input.
+
+Will go with a horizontal bar histogram using barmaker.c function that I have already written to print the histogram. 
+
+Now I need to work out how to make an array of numbers that correspond to the number of words of that length. I am going to do words from 1 character in length up to 15 characters. We have a function from earlier that does word count. I wonder if there is a pushback function to add a number to the end of an array, like in C++.
+
+I need to write a function that will increment (count) characters while state (from the earlier word count function we were given) is IN (1).
+
+I wonder if you can just increment the value in the array. That would be simpler than using nested loops. You can definitely do this, the line 
+++ndigit[c-'0'];
+from the array1.c function shows that.
+
+Need to use '6' insead of the EOF character as I have no idea how to enter a EOF in Windows Subsystem for Linux.
+
+So pseudocode for the wordCount program is, 
+1. read in line by line input from the user.
+2. initialise state to OUT,
+3. if I receive anything other than whitespace set state to IN and increment wordcount by 1.
+4. if i receive whitespace set state to OUT.
+5. Loop back to step 1 until there is a EOF character.
+
+For the new character count histogram we will need to replace state with variable, nchars (number of characters).
+When nchars is greater than 0 we are in a word. When nchars is 0. That is the same as having state = OUT. 
+
+New pseudocode for charCountHist is something like,
+1. read in character by character input from user
+2. initialise nchar to 0.
+3. initialise all of hist[16] to 0 using a loop.
+4. if I receive anything other than whitespace ++nchar
+5. if I receive whitespace and nchar > 0 for example nchar = 3. 
+	++hist[3]
+	nchar = 0
+6. if i receive whitespace and nchar = 0
+	nchar = 0
+7. Loop back to the start until a EOF character.
