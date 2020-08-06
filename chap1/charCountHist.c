@@ -21,7 +21,7 @@ int main() {
 			++nchar;
 	
 	//print the values in hist
-	printf("\nTable of character lengths of words\n\n");
+	printf("\nHistogram of character lengths of words\n\n");
 	for (int i = 1; i < 16; ++i) {
 		printf("%d " ,i);
 		barmaker(hist[i]);

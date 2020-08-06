@@ -1,0 +1,10 @@
+Exercise 1-14
+Write a program to print a histogram of the frequencies of different characters.
+
+Okay, so looks like I can use my barmaker function from the last problem. I will need an array of 26 letters. You could use 26 if statements to complete this problem. But there is defintely a better way similar to the way they did the digits array in arrays1.c
+
+Need to work with both uppercase and lowercase letters. Want a or A to increment hist[0]. b or B will increment hist[1] and so on. Will probably need an if statement asking is the input a letter. Then a if its lowercase use this increment for array position else use the uppercase increment position.
+
+Need to work out what value a and z are and also what value A and Z are. From thenotes it looks like ASCII values are in alphabetical order.
+
+I think this is looking pretty sketched out. Gonna start programming letterCountHist.c
