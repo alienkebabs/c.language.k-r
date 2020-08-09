@@ -1,0 +1,3 @@
+Revise the main routine of the longest line program so it will correctly print the length of arbitrary long input lines, and as much as possible of the text.
+
+This is pretty difficult I think because they haven't gone through memory managemnt in C yet and I think it is important if you want to have variable length arrays. I guess I will start off by typing out the longest line function in section 1.9 and have a think.
