@@ -1,27 +1,83 @@
+/* Exercise 1-16 */
+
 #include <stdio.h>
-#define MAXLINE 1000 /* maximum input line length */
 
-int getline(char line[], int maxline);
-void copy(char to[], char from[]);
+#define MAXLINE 20
 
-/* pring the longest input line */
-main()
+int getline1(char s[], int lim);
+void copyy(char to[], char from[]);
+
+int main(void)
 {
-	int len;
-	int max;
 	char line[MAXLINE];
 	char longest[MAXLINE];
-
-	max = 0;
-	while ((len = getline(line, MAXLINE)) > 0) {
-		if (len > max) {
+	char temp[MAXLINE];
+	int len, max, prevmax, getmore;
+	
+	max = prevmax = getmore = 0;
+	while((len = getline1(line, MAXLINE)) > 0)
+	{
+		if(line[len - 1] != '\n')
+		{
+			if(getmore == 0)
+				copyy(temp, line);
+			prevmax += len;
+		if(max < prevmax)
+			max = prevmax;
+		getmore = 1;
+		}
+		else
+		{
+		if(getmore == 1)
+		{
+			if(max < prevmax + len)
+			{
+			max = prevmax + len;
+			copyy(longest, temp);
+			longest[MAXLINE - 2] = '\n';
+			}
+		getmore = 0;
+		}
+		else if(max < len)
+		{
 			max = len;
-			copy(longest, line);
+			copyy(longest, line);
+		}
+		prevmax = 0;
 		}
 	}
-	if (max > 0) /* there was a line */
-		printf("%s", longest);
-	return 0;
+	if(max > 0)
+	{
+	printf("%s", longest);
+	printf("len = %d\n", max);
+	}
+        return 0;
 }
 
+int getline1(char s[], int lim)
+{
+	int c, i;
+	for(i = 0;i < lim - 1 && ((c = getchar()) != '6' && c != '\n');++i)
+			        s[i] = c;
+	if(c == '\n')
+	{
+		s[i] = c;
+		++i;
+	}
+	else if(c == '6' && i > 0)
+	{
+	/* gotta do something about no newline preceding EOF */
+		s[i] = '\n'; 
+		++i;
+	}
+	s[i] = '\0';
+	return i;
+}
 
+void copyy(char to[], char from[])
+{
+	int i;
+	i = 0;
+	while((to[i] = from[i]) != '\0')
+		++i;
+}

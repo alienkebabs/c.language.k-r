@@ -1,3 +1,64 @@
 Revise the main routine of the longest line program so it will correctly print the length of arbitrary long input lines, and as much as possible of the text.
 
 This is pretty difficult I think because they haven't gone through memory managemnt in C yet and I think it is important if you want to have variable length arrays. I guess I will start off by typing out the longest line function in section 1.9 and have a think.
+
+Back from having a think, and I think we have to count to the end of the line before we initialise 'char line[MAXLINE]' to be of a certain length. 
+
+Oh... I have just looked at some other peoples solutions and I completely misunderstood the question here...
+
+All we need to do is to add some error handling for when MAXLINE = 1000 is exceeded. Here is an example from https://clc-wiki.net/wiki/K%26R2_solutions:Chapter_1:Exercise_16
+
+Pretty sure that the code below does not work, because getline() exits the loop when it reaches MAXLENGTH. This means that max > MAXLENGTH never evaluates to true and we never execute the error handling code. Even when the total actual line length is greater than MAXLINE.
+
+Have ended up copying 386sx's code from the same site. He pretty much re-writes getline() inside of main and then adds a boolean getmore so that you can get to the end of the data even after hitting MAXLENGTH.
+
+#include <stdio.h>
+#define MAXLENGTH 20
+int getline(char [],int);
+void copy(char [],char []);
+int main()
+{
+    int len,max=0;
+    char line[MAXLENGTH],longest[MAXLENGTH];
+    while((len=getline(line,MAXLENGTH))>0)
+        if(len>max){
+            max=len;
+            copy(longest,line);
+        }
+    if(max>0){
+        if(max>MAXLENGTH){
+            printf("\n\nStorage limit exceeded by : %d",max-MAXLENGTH);
+            printf("\nString length : %d",max);
+            printf("\n%s",longest);
+        }
+        else
+            printf("%s",longest);
+    }
+    printf("\n");
+    return 0;
+}
+
+int getline(char line[],int limit)
+{
+    int i,c;
+    for(i=0;i<limit-1&&(((c=getchar())!=EOF)&&(c!='\n'));i++)
+        line[i]=c;
+    if(i==(limit-1)){
+        while((c=getchar())!='\n'){
+            ++i;
+        }
+    }
+    if(c=='\n'){        
+        line[i]=c;
+        ++i;
+    }
+    line[i]='\0';       
+    return i;
+}
+
+void copy(char to[],char from[])
+{
+    int i=0;
+    while((to[i]=from[i])!='\0')
+        ++i;
+}
