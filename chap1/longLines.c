@@ -3,27 +3,27 @@
 #define MAXLINE 1000
 
 int getline1(char s[], int lim);
-void copyy(char to[], char from[]);
+void append(char to[], char from[]);
 
 int main(void)
 {
 	char line[MAXLINE];
 	char longlines[MAXLINE];
 	char temp[MAXLINE];
-	int len, max
+	int len;
+	int max1;
 	
-	max = 0; 
+	max1 = 0; 
 	while((len = getline1(line, MAXLINE)) > 0){
-		if(max < len)
+		if(len > 80)
 		{
-			max = len;
-			copyy(longest, line);
+			append(longlines, line);
 		}
 	}
-	if(max > 0)
+	if(max1 > 0)
 	{
-		printf("%s", longest);
-		printf("len = %d\n", max);
+		printf("%s", longlines);
+		printf("len = %d\n", max1);
 	}
         return 0;
 }
@@ -32,7 +32,7 @@ int getline1(char s[], int lim)
 {
 	int c, i;
 	for(i = 0;i < lim - 1 && ((c = getchar()) != '6' && c != '\n');++i)
-			        s[i] = c;
+		s[i] = c;
 	if(c == '\n')
 	{
 		s[i] = c;
@@ -48,10 +48,13 @@ int getline1(char s[], int lim)
 	return i;
 }
 
-void copyy(char to[], char from[])
+void append(char to[], char from[])
 {
-	int i;
-	i = 0;
-	while((to[i] = from[i]) != '\0')
+	int i,j = 0;
+	j = getline1(to, MAXLINE) - 1;
+	to[j] = from[i];
+	while((to[j] = from[i]) != '\0'){
 		++i;
+		++j;
+	}
 }

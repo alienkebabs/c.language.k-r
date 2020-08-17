@@ -7,3 +7,13 @@ if (it's longer than 80 characters)
 	(append it to the end of the text that will be printed
 	include the newline characters)
 print all of the lines
+
+So I am going to edit the code from Section 1.9 Character Arrays. I will need to edit the copyy function so that it appends all of the lines that are longer than 80 characters to the end of a large array.
+
+So the array char longlines[] will include all lines over 80 characters but when we append we want to not include the /0. The /0 needs to be at the end of the array. I think my current code overwrites the /0 at the end of the array whenever we append
+
+Hmmm.... it is harder than I thought it was because C does not have a simple way to give you the length of your array.. Using getline1() to get the length. Obviously it is a really inefficient way to do this, because we are iterating through the line more than we need to. Also, unfortunately because we start the loop at a /0 we never get to enter the loop at all. Need to do the first iteration outside of the loop so we start the loop on a non /0.
+
+
+
+
