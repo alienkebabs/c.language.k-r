@@ -1,0 +1,9 @@
+Write a program to print all input lines that are longer than 80 characters.
+
+So this is the pseudocode I have. I will start writing code in longLines.c
+
+while (there's another line)
+if (it's longer than 80 characters)
+	(append it to the end of the text that will be printed
+	include the newline characters)
+print all of the lines
