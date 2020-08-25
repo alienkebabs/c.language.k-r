@@ -3,7 +3,7 @@
 /* print Farhenheit-Celcius table
  * for fahr = 0, 20, ..., 300 */
 
-main() 
+int main() 
 {
 	float fahr, celcius;
 	float lower, upper, step;
