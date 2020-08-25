@@ -1,4 +1,8 @@
 # Compiled Source #
 ###################
 a.out
+
+# VS Code Configs #
+###################
 launch.json
+c_cpp_properties.json
