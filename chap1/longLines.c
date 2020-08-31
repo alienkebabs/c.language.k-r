@@ -51,7 +51,7 @@ int getline1(char s[], int lim)
 void append(char to[], char from[])
 {
 	int i,j = 0;
-	j = getline1(to, MAXLINE) - 1;
+	j = getline1(to, MAXLINE);
 	to[j] = from[i];
 	while((to[j] = from[i]) != '\0'){
 		++i;
