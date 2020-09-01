@@ -2,6 +2,8 @@
  #define MAXLINE 1000   /* maximum input line length */
  int getline(char line[], int maxline);
  void copy(char to[], char from[]);
+ int getlength(char line[]);
+
  /* print the longest input line */
  main()
  {
@@ -16,7 +18,7 @@
              copy(longest, line);
          }
      if (max > 0)  /* there was a line */
-         printf("%s", longest);
+         printf("\n%s	%d\n", longest, getlength(longest));
      return 0;
  }
  /* getline:  read a line into s, return length  */
@@ -40,3 +42,10 @@
      while ((to[i] = from[i]) != '\0')
          ++i;
  }
+
+int getlength(char line[]) {
+	int i = 0;
+	while (line[i] != '\0')
+		++i;
+	return i;
+}
