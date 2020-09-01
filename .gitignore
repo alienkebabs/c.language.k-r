@@ -1,11 +1,9 @@
 # Compiled Source #
 ###################
 a.out
-
-# VS Code Configs #
-###################
-launch.json
-c_cpp_properties.json
 chap1/arrays1
 chap1/fahrenheit
 chap1/longLines
+
+# VS Code Configs #
+# have decided to track these after nuking my configs and having to recreate them.
