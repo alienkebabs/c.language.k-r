@@ -14,6 +14,14 @@ So the array char longlines[] will include all lines over 80 characters but when
 
 Hmmm.... it is harder than I thought it was because C does not have a simple way to give you the length of your array.. Using getline1() to get the length. Obviously it is a really inefficient way to do this, because we are iterating through the line more than we need to. Also, unfortunately because we start the loop at a /0 we never get to enter the loop at all. Need to do the first iteration outside of the loop so we start the loop on a non /0.
 
+The changes to the function names mentioned in line 11 are no longer necessary. I worked out if you run gcc -ansi it compiles the way that K&R would have wanted it to.
 
+Also I reverted back to the version in Section 1.6 of the textbook. Started again from the start because I wasn't getting anywhere and was feeling uninspired with this.
 
+Will continue with the earlier pseudocode. The append function I wrote earlier had major issues. Going to go with a design similar to the copy function from Section 1.6. So it will be passed two strings. arg1 will be the super long string we want to append to. arg2 will be the string that gets added to the end.
 
+while (there's another line)
+if (it's longer than 80 characters)
+	(append it to the end of the text that will be printed
+	include the newline characters)
+print all of the lines
