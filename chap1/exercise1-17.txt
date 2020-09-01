@@ -25,3 +25,5 @@ if (it's longer than 80 characters)
 	(append it to the end of the text that will be printed
 	include the newline characters)
 print all of the lines
+
+So the current code I have in longLines.c works as expected. It only prints lines that are longer than 80 characters. The main constraint of my code is that there cannot be more than 1000 characters of total data in all of the long lines summed together. Also no single line can be longer than 1000 characters either. Also there seems to be a bug where the code often puts a bunch of undefined characters before the string. I am not sure why that is happening. However I think I am going to move on because I have spent weeks trying to produce this code.

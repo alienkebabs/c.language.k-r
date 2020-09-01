@@ -4,7 +4,7 @@
  void append(char to[], char from[]);
  int getlength(char line[]);
 
- /* print the longest input line */
+ /* prints all lines that are longer than 80 characters */
  main()
  {
      int len;            /* current line length */
@@ -13,12 +13,12 @@
      char longest[MAXLINE]; /* longest line saved here */
      max = 0;
      while ((len = getline(line, MAXLINE)) > 0)
-         if (len > max) {
+         if (len > 80) {
              max = len;
-             copy(longest, line);
+             append(longest, line);
          }
-     if (max > 0)  /* there was a line */
-         printf("\n%s	%d\n", longest, getlength(longest));
+     if (max > 0)  /* there was a line added to longest */
+         printf("\n*******************************************\n%s	Total Characters is %d\n", longest, getlength(longest));
      return 0;
  }
  /* getline:  read a line into s, return length  */
@@ -39,7 +39,7 @@
  {
 	 int i = getlength(longlines);
 	 int j = getlength(newline) + i;
-	 int k = 0
+	 int k = 0;
 	 while (i < j){
 		 longlines[i] = newline[k];
 		 ++i;
@@ -52,5 +52,5 @@ int getlength(char line[]) {
 	int i = 0;
 	while (line[i] != '\0')
 		++i;
-	return i-1;
+	return i;
 }
