@@ -1,0 +1,7 @@
+Write a function reverses that reverses the character string s. Use it to write a program that reverses its input one line at a time.
+So we will need to find the end of a string and then because we are using a function we will need to iterate through and return the reversed string.
+Pseudocode is,
+(read in a line of text)
+    find the length of the string
+    loop backwards from the end of the string to the start
+    add a \0 character at the end
