@@ -48,6 +48,7 @@
 
  }
 
+/* getlength: return the length of a string */
 int getlength(char line[]) {
 	int i = 0;
 	while (line[i] != '\0')
